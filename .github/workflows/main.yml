@@ -14,14 +14,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-
-      - name: Setup Build Tools for node-gyp (SQLite dependency)
-        run: |
-          npm install --global node-gyp Windows-Build-Tools
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build Windows Installer
         run: npm run dist
