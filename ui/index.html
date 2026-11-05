@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OmniBrowser Pro</title><link rel="stylesheet" href="style.css"></head><body>
+<header><b>OmniBrowser Pro</b><nav id="tabs"><button data-t="b" class="on">Browsers</button><button data-t="n">Network</button><button data-t="d">Devices</button><button data-t="a">Automation</button><button data-t="s">Settings</button></nav><small id="stat"></small></header>
+<section id="t-b" class="on">
+<div class="tb"><select id="layout"><option>10</option><option>25</option><option>50</option><option>100</option></select><button id="all">Select all</button><button id="none">Deselect all</button>
+<button class="pri" data-a="start">Start</button><button data-a="stop">Stop</button><button data-a="restart">Restart</button><button data-a="close">Close</button><button data-a="reload">Reload</button><button data-a="screenshot">Screenshot</button>
+<button id="startall">Start all</button><button id="stopall">Stop all</button><button id="restartall">Restart all</button><small id="sel"></small></div>
+<div class="tb"><input id="url" placeholder="https://example.com (applies to selected)" style="flex:1"><button class="pri" id="go">Navigate selected</button><input id="sy" type="number" placeholder="scrollY" style="width:80px"><button id="scr">Scroll</button><input id="vw" type="number" placeholder="W" style="width:64px"><input id="vh" type="number" placeholder="H" style="width:64px"><button id="vp">Viewport</button></div>
+<div class="panel"><div class="tb"><b id="mt">Main browser</b><button id="back">◀</button><button id="fwd">▶</button><button id="rl">⟳</button><button id="stp">✕</button><input id="murl" style="flex:1" placeholder="Address"><button class="pri" id="mgo">Go</button><button id="mshot">📷</button><button id="mfs">⛶</button></div>
+<img id="main" alt=""><div id="minfo"></div></div><div id="grid"></div></section>
+<section id="t-n"><div class="panel"><div class="tb"><select id="nsess"></select><button class="pri" id="ncheck">Check network</button></div><pre id="nout">Start a session, then check its network. Values come from live requests made by that session.</pre>
+<h4>What is what</h4><pre>Profile isolation: separate cookies, storage, cache per session (real).
+Device emulation: viewport, DPR, touch, user-agent (emulated, not a physical device).
+Network isolation: only if you configure a proxy you are authorized to use for that session; otherwise all sessions share this PC's connection.
+Public IP: what an external service observes for that session, verified live, never assumed.</pre>
+<h4>Proxy for selected sessions (authorized connections only)</h4><div class="tb"><input id="px" placeholder="http://host:port or socks5://host:port" style="flex:1"><input id="pu" placeholder="user"><input id="pp" type="password" placeholder="password"><button id="papply">Apply</button><button id="pclear">Remove proxy</button></div></div></section>
+<section id="t-d"><div class="panel"><b>Device emulation for selected sessions</b><div class="tb"><select id="dev"></select><button class="pri" id="applydev">Apply profile</button><label><input type="checkbox" id="touch"> touch</label><button id="applytouch">Set touch</button></div>
+<div class="tb"><input id="dw" type="number" placeholder="Width"><input id="dh" type="number" placeholder="Height"><input id="ddpr" type="number" step="0.1" placeholder="DPR"><button id="dvp">Apply size</button></div>
+<div class="tb"><input id="dua" placeholder="Custom user-agent" style="flex:1"><button id="dapua">Apply UA</button></div><pre id="dinfo"></pre></div></section>
+<section id="t-a"><div class="panel"><b>QA check across selected sessions</b><div class="tb"><input id="qurl" placeholder="https://your-site.example" style="flex:1"><input id="qsel" placeholder="CSS selector to verify (optional)"><button class="pri" id="qrun">Run</button></div>
+<table id="qtab"><thead><tr><th>#</th><th>Device</th><th>Title</th><th>HTTP</th><th>Load ms</th><th>Selector</th><th>New errors</th><th>Screenshot</th></tr></thead><tbody></tbody></table></div></section>
+<section id="t-s"><div class="panel"><b>Limits</b><div class="tb"><label>Max active <input id="s1" type="number"></label><label>Concurrency <input id="s2" type="number"></label><label>Min free MB <input id="s3" type="number"></label><label>Preview ms <input id="s4" type="number"></label><button class="pri" id="ssave">Save</button></div>
+<small>Recommended: 10 sessions 4 cores/8 GB, 25: 8 cores/16 GB, 50: 16 cores/32 GB, 100: 32 cores/64 GB. Preview interval applies after restart.</small>
+<h4>Data</h4><div class="tb"><button id="exp">Export configuration</button><input type="file" id="imp" accept=".json"><button id="clear">Clear browser data (selected)</button><button id="del">Delete selected sessions</button><button class="danger" id="reset">Reset application data</button></div>
+<h4>Web dashboard</h4><pre id="webinfo"></pre><h4>Audit log</h4><pre id="audit"></pre><h4>Browser logs</h4><pre id="logs"></pre></div></section>
+<script src="app.js"></script></body></html>

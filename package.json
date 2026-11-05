@@ -1,0 +1,6 @@
+{"name":"omnibrowser-pro","version":"0.1.0","description":"OmniBrowser Pro","main":"src/main.js","author":"OmniBrowser",
+"scripts":{"start":"electron .","dist":"electron-builder --win nsis","postinstall":"electron-builder install-app-deps"},
+"dependencies":{"better-sqlite3":"^11.1.2","express":"^4.19.2","ws":"^8.18.0"},
+"devDependencies":{"electron":"^31.7.0","electron-builder":"^24.13.3"},
+"build":{"appId":"com.omnibrowser.pro","productName":"OmniBrowser Pro","directories":{"output":"dist"},"files":["src/**","ui/**","package.json"],
+"win":{"target":"nsis"},"nsis":{"oneClick":false,"allowToChangeInstallationDirectory":true,"perMachine":false,"createDesktopShortcut":true,"createStartMenuShortcut":true,"deleteAppDataOnUninstall":false}}}
