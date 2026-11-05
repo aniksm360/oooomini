@@ -24,8 +24,10 @@ jobs:
       - name: Rebuild Native Modules (Better-SQLite3)
         run: npx electron-builder install-app-deps
 
-      - name: Build Windows Installer (No Publish)
-        run: npx electron-builder --win nsis -c.publish=never
+      - name: Build Windows Installer
+        run: npm run dist
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Installer
         uses: actions/upload-artifact@v4
