@@ -13,16 +13,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-size: 20
+          node-version: 20
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build Windows App
-        run: npm run build # এখানে আপনার প্রজেক্টের আসল বিল্ড কমান্ডটি হবে
+      - name: Install Builder Globally
+        run: npm install -g electron-builder
+
+      - name: Build Windows App Directly
+        run: npx electron-builder --windows
 
       - name: Upload Installer
         uses: actions/upload-artifact@v4
         with:
           name: windows-installer
-          path: dist/*.exe # এখানে আপনার বিল্ড হওয়া .exe ফাইলটি যেখানে জমা হয় সেই ফোল্ডারের পাথ হবে
+          path: dist/
