@@ -14,18 +14,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
+
+      - name: Setup Build Tools for node-gyp (SQLite dependency)
+        run: |
+          npm install --global node-gyp Windows-Build-Tools
 
       - name: Install dependencies
         run: npm install
 
-      - name: Install Builder Globally
-        run: npm install -g electron-builder
-
-      - name: Build Windows App Directly
-        run: npx electron-builder --windows
+      - name: Build Windows Installer
+        run: npm run dist
 
       - name: Upload Installer
         uses: actions/upload-artifact@v4
         with:
           name: windows-installer
-          path: dist/
+          path: dist/*.exe
