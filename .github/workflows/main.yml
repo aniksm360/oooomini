@@ -15,8 +15,14 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install Node-Gyp Globally
+        run: npm install -g node-gyp
+
       - name: Install dependencies
         run: npm install --legacy-peer-deps
+
+      - name: Rebuild Native Modules (Better-SQLite3)
+        run: npx electron-builder install-app-deps
 
       - name: Build Windows Installer
         run: npm run dist
